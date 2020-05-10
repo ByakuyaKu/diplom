@@ -1,0 +1,30 @@
+﻿@page
+@model Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@*<div class="dropdown">
+        <center>
+            <h1 class="display-4">Please choose algorithm.</h1>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Кнопка выпадающего списка
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" asp-area="" asp-page="/Alg/AHP_Fuzzy">AHP Fuzzy</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </center>
+    </div>*@
+<div class="jumbotron">
+    <h1 class="display-4">Привет, мир!</h1>
+    <p class="lead">Это простой пример блока с компонентом в стиле jumbotron для привлечения дополнительного внимания к содержанию или информации.</p>
+    <hr class="my-4">
+    <p>Please choose algorithm.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" asp-area="" asp-page="/Alg/AHP_Fuzzy">AHP Fuzzy</a>
+        <a class="btn btn-primary btn-lg" asp-area="" asp-page="/Alg/AHP_Fuzzy">AHP</a>
+        <a class="btn btn-primary btn-lg" asp-area="" asp-page="/Alg/AHP_Fuzzy">AHP z</a>
+    </p>
+</div>

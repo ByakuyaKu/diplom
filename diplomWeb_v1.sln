@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "diplomWeb_v1", "diplomWeb_v1\diplomWeb_v1.csproj", "{05C2621C-0EF5-4A19-93B5-1444896564C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{00134199-5FBE-4888-BAD7-78568938F350}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{B3CCABE7-77CE-4E38-A15D-0C3C2E3056AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PL", "PL", "{5BDA705A-5843-455D-B3C2-9CE3AF39587C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05C2621C-0EF5-4A19-93B5-1444896564C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05C2621C-0EF5-4A19-93B5-1444896564C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05C2621C-0EF5-4A19-93B5-1444896564C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05C2621C-0EF5-4A19-93B5-1444896564C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{05C2621C-0EF5-4A19-93B5-1444896564C8} = {5BDA705A-5843-455D-B3C2-9CE3AF39587C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {933AFCF9-B9A1-4D6C-AA64-903466D9D145}
+	EndGlobalSection
+EndGlobal

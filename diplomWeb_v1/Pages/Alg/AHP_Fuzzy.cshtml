@@ -1,0 +1,43 @@
+﻿@page
+@model diplomWeb_v1.Pages.Alg.AHP_FuzzyModel
+@{
+    ViewData["Title"] = "AHP Fuzzy";
+}
+
+<h1 class="display-4">@ViewData["Title"]</h1>
+
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/AHP_Fuzzy.css" />
+</head>
+<body>
+    <div class="myform">
+        <form method="post">
+            <div>
+                <label class="label-ahp-f-input">Имя критерия</label>
+                <input type="text" class="form-text" id="CriteriaName" name="CriteriaName" placeholder="Введите имя критерия" />
+
+                <label class="label-ahp-f-input">Вес критерия</label>
+                <input type="number" class="form-text" id="CriteriaWeight" name="CriteriaWeight" placeholder="Введите вес критерия" />
+
+                <input type="submit" class="submit-ahp-f-intput" value="Добавить критерий" />
+            </div>
+        </form>
+    </div>
+
+    <div class="mytable">
+        <table class="table">
+            <tr class="tt"><td>Criteria name</td><td>Criteria weight</td></tr>
+            @foreach (Criteria cr in Model.Criterias)
+            {
+                <tr>
+                    <td>@cr.CriteriaName</td>
+                    <td>@cr.CriteriaWeight</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
