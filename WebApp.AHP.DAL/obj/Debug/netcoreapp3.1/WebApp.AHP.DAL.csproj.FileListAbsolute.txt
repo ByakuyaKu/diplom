@@ -1,0 +1,6 @@
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\bin\Debug\netcoreapp3.1\WebApp.AHP.DAL.deps.json
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\bin\Debug\netcoreapp3.1\WebApp.AHP.DAL.dll
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.AssemblyInfoInputs.cache
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.AssemblyInfo.cs
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.csprojAssemblyReference.cache
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.csproj.CoreCompileInputs.cache

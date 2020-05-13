@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
+
 
 namespace diplomWeb_v1
 {
@@ -23,6 +26,8 @@ namespace diplomWeb_v1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connection = Configuration.GetConnectionString("WebAppDb");
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
             services.AddRazorPages();
         }
 

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebApp.AHP.BLL.Interfaces\WebApp.AHP.BLL.Interfaces.csproj" />
+    <ProjectReference Include="..\WebApp.AHP.BLL\WebApp.AHP.BLL.csproj" />
+    <ProjectReference Include="..\WebApp.AHP.DAL.Interfaces\WebApp.AHP.DAL.Interfaces.csproj" />
+    <ProjectReference Include="..\WebApp.AHP.DAL\WebApp.AHP.DAL.csproj" />
+  </ItemGroup>
+
+</Project>

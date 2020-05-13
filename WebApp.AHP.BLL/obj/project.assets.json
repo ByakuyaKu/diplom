@@ -1,0 +1,168 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "MathNet.Numerics/4.9.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/MathNet.Numerics.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MathNet.Numerics.dll": {}
+        }
+      },
+      "WebApp.AHP.BLL.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "WebApp.AHP.Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/WebApp.AHP.BLL.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebApp.AHP.BLL.Interfaces.dll": {}
+        }
+      },
+      "WebApp.AHP.DAL.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "WebApp.AHP.Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/WebApp.AHP.DAL.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebApp.AHP.DAL.Interfaces.dll": {}
+        }
+      },
+      "WebApp.AHP.Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/WebApp.AHP.Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebApp.AHP.Entities.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MathNet.Numerics/4.9.1": {
+      "sha512": "tLg/nvtdYd830Ee8nWsrsIiBTxeKmUEtsrQIPX4Sn60l7eMmZFIvSaMdG6o08FGsByi0TArJ6tx8LVT4vpWqyQ==",
+      "type": "package",
+      "path": "mathnet.numerics/4.9.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net40/MathNet.Numerics.dll",
+        "lib/net40/MathNet.Numerics.xml",
+        "lib/net461/MathNet.Numerics.dll",
+        "lib/net461/MathNet.Numerics.xml",
+        "lib/netstandard1.3/MathNet.Numerics.dll",
+        "lib/netstandard1.3/MathNet.Numerics.xml",
+        "lib/netstandard2.0/MathNet.Numerics.dll",
+        "lib/netstandard2.0/MathNet.Numerics.xml",
+        "mathnet.numerics.4.9.1.nupkg.sha512",
+        "mathnet.numerics.nuspec"
+      ]
+    },
+    "WebApp.AHP.BLL.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../WebApp.AHP.BLL.Interfaces/WebApp.AHP.BLL.Interfaces.csproj",
+      "msbuildProject": "../WebApp.AHP.BLL.Interfaces/WebApp.AHP.BLL.Interfaces.csproj"
+    },
+    "WebApp.AHP.DAL.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../WebApp.AHP.DAL.Interfaces/WebApp.AHP.DAL.Interfaces.csproj",
+      "msbuildProject": "../WebApp.AHP.DAL.Interfaces/WebApp.AHP.DAL.Interfaces.csproj"
+    },
+    "WebApp.AHP.Entities/1.0.0": {
+      "type": "project",
+      "path": "../WebApp.AHP.Entities/WebApp.AHP.Entities.csproj",
+      "msbuildProject": "../WebApp.AHP.Entities/WebApp.AHP.Entities.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "MathNet.Numerics >= 4.9.1",
+      "WebApp.AHP.BLL.Interfaces >= 1.0.0",
+      "WebApp.AHP.DAL.Interfaces >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Toga\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL\\WebApp.AHP.BLL.csproj",
+      "projectName": "WebApp.AHP.BLL",
+      "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL\\WebApp.AHP.BLL.csproj",
+      "packagesPath": "C:\\Users\\Toga\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Toga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {
+            "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj": {
+              "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj"
+            },
+            "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL.Interfaces\\WebApp.AHP.DAL.Interfaces.csproj": {
+              "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL.Interfaces\\WebApp.AHP.DAL.Interfaces.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "dependencies": {
+          "MathNet.Numerics": {
+            "target": "Package",
+            "version": "[4.9.1, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj": {}
+  },
+  "projects": {
+    "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj",
+        "projectName": "WebApp.AHP.BLL.Interfaces",
+        "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\Toga\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Toga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Entities\\WebApp.AHP.Entities.csproj": {
+                "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Entities\\WebApp.AHP.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Entities\\WebApp.AHP.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Entities\\WebApp.AHP.Entities.csproj",
+        "projectName": "WebApp.AHP.Entities",
+        "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Entities\\WebApp.AHP.Entities.csproj",
+        "packagesPath": "C:\\Users\\Toga\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Toga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

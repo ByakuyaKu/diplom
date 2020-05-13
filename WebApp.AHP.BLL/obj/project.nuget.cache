@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "nOoENe31POaI7S1J48mFSb0/dgvPWjFpYDf9izmGvWbDryz9WDB61Ex0G5AuRE6X06CgaoWXkr2GbHH/CZmFjg==",
+  "success": true,
+  "projectFilePath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL\\WebApp.AHP.BLL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Toga\\.nuget\\packages\\mathnet.numerics\\4.9.1\\mathnet.numerics.4.9.1.nupkg.sha512"
+  ],
+  "logs": []
+}

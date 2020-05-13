@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\diplomWeb_v1\diplomWeb_v1.csproj" />
+    <ProjectReference Include="..\WebApp.AHP.DAL.Interfaces\WebApp.AHP.DAL.Interfaces.csproj" />
+    <ProjectReference Include="..\WebApp.AHP.Entities\WebApp.AHP.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
