@@ -52,7 +52,7 @@ namespace WebApp.AHP.DAL
             }
         }
 
-        public int AddAlternative(Alternative alternative, string matrix, int sessionId)
+        public int AddAlternative(Alternative alternative, int sessionId)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -67,15 +67,6 @@ namespace WebApp.AHP.DAL
                     SqlDbType = SqlDbType.NVarChar,
                     Direction = ParameterDirection.Input
                 });
-
-                command.Parameters.Add(new SqlParameter
-                {
-                    ParameterName = "@Matrix",
-                    Value = matrix,
-                    SqlDbType = SqlDbType.NVarChar,
-                    Direction = ParameterDirection.Input
-                });
-
 
                 command.Parameters.Add(new SqlParameter
                 {
@@ -101,7 +92,7 @@ namespace WebApp.AHP.DAL
             }
         }
 
-        public int AddCriteria(Criteria criteria, int sessionid)
+        public int AddCriteria(Criteria criteria, string matrix, int sessionid)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -114,6 +105,23 @@ namespace WebApp.AHP.DAL
                     ParameterName = "@CriteriaName",
                     Value = criteria.CriteriaName,
                     SqlDbType = SqlDbType.NVarChar,
+                    Direction = ParameterDirection.Input
+                });
+
+                command.Parameters.Add(new SqlParameter
+                {
+                    ParameterName = "@CriteriaWeight",
+                    Value = criteria.CriteriaWeight,
+                    SqlDbType = SqlDbType.Float,
+                    Direction = ParameterDirection.Input
+                });
+
+                command.Parameters.Add(new SqlParameter
+                {
+                    ParameterName = "@Matrix",
+                    Value = matrix,
+                    SqlDbType = SqlDbType.NVarChar,
+                    Size = 500,
                     Direction = ParameterDirection.Input
                 });
 
@@ -138,27 +146,6 @@ namespace WebApp.AHP.DAL
                 command.ExecuteNonQuery();
 
                 return (int)id.Value;
-            }
-        }
-
-        public void DeleteById(int id)
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                var command = connection.CreateCommand();
-                command.CommandText = "AddCriteria";
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-
-                command.Parameters.Add(new SqlParameter
-                {
-                    ParameterName = "@CriteriaID",
-                    Value = id,
-                    SqlDbType = SqlDbType.Int,
-                    Direction = ParameterDirection.Input
-                });
-                connection.Open();
-
-                command.ExecuteNonQuery();
             }
         }
 
@@ -225,7 +212,38 @@ namespace WebApp.AHP.DAL
                 return (int)alternativenumber.Value;
             }
         }
-        public IEnumerable<Alternative> GetAlternative(int sessionid)
+        public IEnumerable<Criteria> GetAllCriteria(int sessionid)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var command = connection.CreateCommand();
+                command.CommandText = "GetCriteria";
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                command.Parameters.Add(new SqlParameter
+                {
+                    ParameterName = "@SessionID",
+                    Value = sessionid,
+                    SqlDbType = SqlDbType.Int,
+                    Direction = ParameterDirection.Input
+                });
+
+                connection.Open();
+
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    yield return new Criteria
+                    {
+                        CriteriaID = (int)reader["CriteriaID"],
+                        CriteriaName = (string)reader["CriteriaName"],
+                        CriteriaWeight = (double)reader["CriteriaWeight"],
+                        Matrix = (string)reader["Matrix"],
+                    };
+                }
+            }
+        }
+        public IEnumerable<Alternative> GetAllAlternative(int sessionid)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -250,11 +268,10 @@ namespace WebApp.AHP.DAL
                     {
                         AlternativeID = (int)reader["AlternativeID"],
                         AlternativeName = (string)reader["AlternativeName"],
-                        Matrix = (string)reader["Matrix"],
                     };
                 }
             }
-        }
+        }     
 
         public IEnumerable<Criteria> GetCriteriaName(int sessionid)
         {
@@ -308,52 +325,6 @@ namespace WebApp.AHP.DAL
                 command.ExecuteNonQuery();
 
                 return (int)sessionId.Value;
-            }
-        }
-
-        public IEnumerable<Criteria> GetAll()
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                var command = connection.CreateCommand();
-                command.CommandText = "GetAll";
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-
-                command.Parameters.Add(new SqlParameter
-                {
-                    ParameterName = "@CriteriaName",
-                    SqlDbType = SqlDbType.NVarChar,
-                    Direction = ParameterDirection.Output
-                });
-
-                command.Parameters.Add(new SqlParameter
-                {
-                    ParameterName = "@CriteriaWeight",
-                    SqlDbType = SqlDbType.Float,
-                    Direction = ParameterDirection.Output
-                });
-
-                var id = new SqlParameter
-                {
-                    ParameterName = "@CriteriaID",
-                    SqlDbType = SqlDbType.Int,
-                    Direction = ParameterDirection.Output
-                };
-                command.Parameters.Add(id);
-
-                connection.Open();
-
-                var reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    yield return new Criteria
-                    {
-                        CriteriaID = (int)reader["CriteriaID"],
-                        CriteriaName = (string)reader["CriteriaName"],
-                        CriteriaWeight = (string)reader["CriteriaWeight"],
-                    };
-                }
             }
         }
     }

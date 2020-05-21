@@ -6,9 +6,9 @@ namespace WebApp.AHP.BLL.Interfaces
 {
     public interface IAHPLogic
     {
-        int AddCriteria(Criteria criteria, int sessionid);
+        int AddCriteria(Criteria criteria, string matrix, int sessionid);
 
-        int AddAlternative(Alternative alternative, string matrix, int sessionId);
+        int AddAlternative(Alternative alternative, int sessionId);
 
         int GetInputCriteriaNumber(IEnumerable<Criteria> criterias);
 
@@ -17,13 +17,11 @@ namespace WebApp.AHP.BLL.Interfaces
         int GetSessionCriteriaNumber(int id);
         int GetSessionAlternariveNumber(int id);
         int GetSessionId();
-        IEnumerable<Alternative> GetAlternative(int sessionid);
+        //IEnumerable<Alternative> GetAlternative(int sessionid);
         IEnumerable<Criteria> GetCriteriaName(int sessionid);
 
-        List<Alternative> StartAhp(IEnumerable<Alternative> alternatives, int criterianumber);
-
-        void DeleteById(int id);
-
-        IEnumerable<Criteria> GetAll();
+        List<Criteria> StartAhp(IEnumerable<Criteria> criterias, int alternativenumber);
+        IEnumerable<Criteria> GetAllCriteria(int sessionid);
+        IEnumerable<Alternative> GetAllAlternative(int sessionid);
     }
 }

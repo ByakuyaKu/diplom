@@ -35,41 +35,39 @@ namespace WebApp.AHP.BLL
             return _ahpDao.GetSessionId();
         }
 
-        public int AddCriteria(Criteria criteria, int sessionid)
+        public int AddCriteria(Criteria criteria, string matrix, int sessionid)
         {
-            return _ahpDao.AddCriteria(criteria, sessionid);
+            return _ahpDao.AddCriteria(criteria, matrix, sessionid);
         }
 
-        public int AddAlternative(Alternative alternative, string matrix, int sessionId)
+        public int AddAlternative(Alternative alternative, int sessionId)
         {
-            return _ahpDao.AddAlternative(alternative, matrix, sessionId);
+            return _ahpDao.AddAlternative(alternative, sessionId);
         }
 
         public int AddSession(int critriaNumber, int alternativenumber)
         {
             return _ahpDao.AddSession(critriaNumber, alternativenumber);
         }
-        public IEnumerable<Alternative> GetAlternative(int sessionid)
-        {
-            return _ahpDao.GetAlternative(sessionid);
-        }
+        //public IEnumerable<Alternative> GetAlternative(int sessionid)
+        //{
+        //    return _ahpDao.GetAlternative(sessionid);
+        //}
 
         public IEnumerable<Criteria> GetCriteriaName(int sessionid)
         {
             return _ahpDao.GetCriteriaName(sessionid);
         }
-
-        public void DeleteById(int id)
+        public IEnumerable<Criteria> GetAllCriteria(int sessionid)
         {
-            _ahpDao.DeleteById(id);
+            return _ahpDao.GetAllCriteria(sessionid);
+        }
+        public IEnumerable<Alternative> GetAllAlternative(int sessionid)
+        {
+            return _ahpDao.GetAllAlternative(sessionid);
         }
 
-        public IEnumerable<Criteria> GetAll()
-        {
-            return _ahpDao.GetAll();
-        }
-
-        public List<Alternative> StartAhp(IEnumerable<Alternative> alternatives, int criterianumber) => AhpAlgorytm(ParseMatrix(alternatives, criterianumber), criterianumber);
+        public List<Criteria> StartAhp(IEnumerable<Criteria> criterias, int alternativenumber) => AhpAlgorytm(ParseMatrix(criterias, alternativenumber), alternativenumber);
 
         public int GetInputCriteriaNumber(IEnumerable<Criteria> criterias) => criterias.ToList().Count;
 
@@ -84,43 +82,43 @@ namespace WebApp.AHP.BLL
             return result;
         }
 
-        private List<Alternative> ParseMatrix(IEnumerable<Alternative> alternatives, int criterianumber)
+        private List<Criteria> ParseMatrix(IEnumerable<Criteria> criterias, int alternativenumber)
         {
-            List<Alternative> ParsedAlternatives = new List<Alternative>();
-            ParsedAlternatives = alternatives.ToList<Alternative>();
+            List<Criteria> ParsedCriterias = new List<Criteria>();
+            ParsedCriterias = criterias.ToList<Criteria>();
 
-            for (int i = 0; i < ParsedAlternatives.Count; i++)
+            for (int i = 0; i < ParsedCriterias.Count; i++)
             {
-                ParsedAlternatives[i].MatrixOfPairedComparisons = new int[criterianumber, criterianumber];
-                ParsedAlternatives[i].Matrix = SplitMatrix(ParsedAlternatives[i].Matrix);
+                ParsedCriterias[i].MatrixOfPairedComparisons = new int[alternativenumber, alternativenumber];
+                ParsedCriterias[i].Matrix = SplitMatrix(ParsedCriterias[i].Matrix);
 
-                for (int j = 0; j < ParsedAlternatives[i].Matrix.Length;)
+                for (int j = 0; j < ParsedCriterias[i].Matrix.Length;)
                 {
-                    for (int c = 0; c < criterianumber; c++)
-                        for (int r = 0; r < criterianumber; r++, j++)
-                            ParsedAlternatives[i].MatrixOfPairedComparisons[c, r] = Int32.Parse((ParsedAlternatives[i].Matrix[j]).ToString());
+                    for (int c = 0; c < alternativenumber; c++)
+                        for (int r = 0; r < alternativenumber; r++, j++)
+                            ParsedCriterias[i].MatrixOfPairedComparisons[c, r] = Int32.Parse((ParsedCriterias[i].Matrix[j]).ToString());
                 }
             }
 
-            return ParsedAlternatives;
+            return ParsedCriterias;
         }
 
-        private List<Alternative> AhpAlgorytm(List<Alternative> alternatives, int criterianumber)
+        private List<Criteria> AhpAlgorytm(List<Criteria> criterias, int alternativenumber)
         {
-            alternatives = VectorPInit(alternatives, criterianumber);
+            criterias = VectorPInit(criterias, alternativenumber);
 
-            var pnext = new double[criterianumber];
+            var pnext = new double[alternativenumber];
 
-            for (int i = 0; i < alternatives.Count; i++)
+            for (int i = 0; i < criterias.Count; i++)
             {
                 for (int counter = 0; counter < 101; counter++)
                 {
-                    pnext = MultiplyMatrixByVecor(alternatives[i].MatrixOfPairedComparisons, alternatives[i].VectorP);
+                    pnext = MultiplyMatrixByVecor(criterias[i].MatrixOfPairedComparisons, criterias[i].VectorP);
 
-                    pnext = Normalize(pnext, VectorSum(alternatives[i].VectorP));
+                    pnext = Normalize(pnext, VectorSum(criterias[i].VectorP));
 
-                    if (!Accuracy(alternatives[i].VectorP, pnext))
-                        alternatives[i].VectorP = pnext;
+                    if (!Accuracy(criterias[i].VectorP, pnext))
+                        criterias[i].VectorP = pnext;
                     else if (counter == 100)
                         Console.WriteLine("Error");
                     else
@@ -128,19 +126,19 @@ namespace WebApp.AHP.BLL
                 }
             }
 
-            return alternatives;
+            return criterias;
         }
 
-        private static List<Alternative> VectorPInit(List<Alternative> alternatives, int criterianumber)
+        private static List<Criteria> VectorPInit(List<Criteria> criterias, int alternativenumber)
         {
-            for (int i = 0; i < alternatives.Count; i++)
+            for (int i = 0; i < criterias.Count; i++)
             {
-                alternatives[i].VectorP = new double[criterianumber];
-                for (int j = 0; j < criterianumber; j++)
-                    alternatives[i].VectorP[j] = 1;
+                criterias[i].VectorP = new double[alternativenumber];
+                for (int j = 0; j < alternativenumber; j++)
+                    criterias[i].VectorP[j] = 1;
             }
 
-            return alternatives;
+            return criterias;
         }
 
         private static double[] Normalize(double[] vector, double normilizecriteria)

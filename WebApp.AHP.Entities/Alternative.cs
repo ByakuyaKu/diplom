@@ -13,9 +13,9 @@ namespace WebApp.AHP.Entities
 
         public int[,] MatrixOfPairedComparisons { get; set; }
 
-        public double[] VectorP { get; set; }
+        //public double[] VectorP { get; set; }
 
-        public string Matrix { get; set; }
+        //public string Matrix { get; set; }
 
         public Alternative(int id, string name)
         {

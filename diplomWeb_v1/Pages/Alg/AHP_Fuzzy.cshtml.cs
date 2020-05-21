@@ -24,7 +24,7 @@ namespace diplomWeb_v1.Pages.Alg
         public int sessionId { get; set; }
         public int criteriaNumber { get; set; }
         public int alternativeNumber { get; set; }
-        public List<Alternative> alternatives { get; set; }
+        public List<Alternative> Alternatives { get; set; }
         public bool MatrixOfPairedCompRender { get; set; }
         public bool RenderFirstStep { get; set; }
         public bool RenderSecondStep { get; set; }
@@ -32,11 +32,13 @@ namespace diplomWeb_v1.Pages.Alg
         public bool RenderInput { get; set; }
         public bool RenderResult { get; set; }
         public bool ActivateRun { get; set; }
+        public List<Criteria> Criterias { get; set; }
 
         public AHP_FuzzyModel(ILogger<PrivacyModel> logger)
         {
             _logger = logger;
-            alternatives = new List<Alternative>();
+            Alternatives = new List<Alternative>();
+            Criterias = new List<Criteria>();
             RenderResult = false;
             MatrixOfPairedCompRender = false;
             RenderFirstStep = true;
@@ -62,40 +64,24 @@ namespace diplomWeb_v1.Pages.Alg
             return Page();
         }
 
-        public IActionResult OnPostSubmitCriteriaName(string CriteriaName)
+        public IActionResult OnPostSubmitCriteria(string CriteriaName, double CriteriaWeight, string Matrix)
         {
             sessionId = BLLLogic.GetSessionId();
-            criteriaNumber = BLLLogic.GetSessionCriteriaNumber(sessionId);
-            BLLLogic.AddCriteria(new Criteria(CriteriaName), sessionId);
-
-            RenderFirstStep = false;
-            if (BLLLogic.GetCriteriaName(sessionId).ToList().Count == criteriaNumber)
-                RenderThirdStep = true;
-            else
-                RenderSecondStep = true;
-
-            return Page();
-        }
-
-        public IActionResult OnPostSubmitAlternative(string AlternativeName, string Matrix)
-        {
-            sessionId = BLLLogic.GetSessionId();
-            BLLLogic.AddAlternative(new Alternative(AlternativeName), Matrix, sessionId);
             criteriaNumber = BLLLogic.GetSessionCriteriaNumber(sessionId);
             alternativeNumber = BLLLogic.GetSessionAlternariveNumber(sessionId);
-            int numbernputAlternatives = BLLLogic.GetAlternative(sessionId).ToList().Count;
+            BLLLogic.AddCriteria(new Criteria(CriteriaName, CriteriaWeight), Matrix,  sessionId);
 
-            alternatives = BLLLogic.GetAlternative(sessionId).ToList();
-            for (int i = 0; i < alternatives.Count; i++)
-                for (int j = 0; j < criteriaNumber; j++)
-                    alternatives[i].AlternativeCriterias.Add(BLLLogic.GetCriteriaName(sessionId).ToList()[j]);
+            Criterias = BLLLogic.GetAllCriteria(sessionId).ToList();
+            Criterias = BLLLogic.StartAhp(Criterias, alternativeNumber);
 
-            alternatives = BLLLogic.StartAhp(alternatives, criteriaNumber);
+            Alternatives = BLLLogic.GetAllAlternative(sessionId).ToList();
+            //for (int i = 0; i < Alternatives.Count; i++)
+            //    for (int j = 0; j < criteriaNumber; j++)
+            //        Alternatives[i].AlternativeCriterias.Add(BLLLogic.GetCriteriaName(sessionId).ToList()[j]);
 
             MatrixOfPairedCompRender = true;
             RenderFirstStep = false;
-            RenderSecondStep = false;
-            if (alternativeNumber == numbernputAlternatives)
+            if (BLLLogic.GetCriteriaName(sessionId).ToList().Count == criteriaNumber)
             {
                 ActivateRun = true;
                 RenderInput = false;
@@ -106,17 +92,38 @@ namespace diplomWeb_v1.Pages.Alg
             return Page();
         }
 
+        public IActionResult OnPostSubmitAlternative(string AlternativeName)
+        {
+            sessionId = BLLLogic.GetSessionId();
+            BLLLogic.AddAlternative(new Alternative(AlternativeName), sessionId);
+            criteriaNumber = BLLLogic.GetSessionCriteriaNumber(sessionId);
+            alternativeNumber = BLLLogic.GetSessionAlternariveNumber(sessionId);
+
+            Alternatives = BLLLogic.GetAllAlternative(sessionId).ToList();
+
+            //Alternatives = BLLLogic.StartAhp(alternatives, criteriaNumber);
+
+
+            RenderFirstStep = false;
+            if (alternativeNumber == Alternatives.Count)
+                RenderThirdStep = true;
+            else
+                RenderSecondStep = true;
+
+            return Page();
+        }
+
         public IActionResult OnPostStartAlg()
         {
             sessionId = BLLLogic.GetSessionId();
-            BLLLogic.GetAlternative(sessionId);
             criteriaNumber = BLLLogic.GetSessionCriteriaNumber(sessionId);
             alternativeNumber = BLLLogic.GetSessionAlternariveNumber(sessionId);
-            alternatives = BLLLogic.StartAhp(BLLLogic.GetAlternative(sessionId), criteriaNumber);
+            Criterias = BLLLogic.StartAhp(BLLLogic.GetAllCriteria(sessionId), alternativeNumber);
+            Alternatives = BLLLogic.GetAllAlternative(sessionId).ToList();
 
-            for (int i = 0; i < alternatives.Count; i++)
+            for (int i = 0; i < Alternatives.Count; i++)
                 for (int j = 0; j < criteriaNumber; j++)
-                    alternatives[i].AlternativeCriterias.Add(BLLLogic.GetCriteriaName(sessionId).ToList()[j]);
+                    Alternatives[i].AlternativeCriterias.Add(BLLLogic.GetCriteriaName(sessionId).ToList()[j]);
 
             RenderResult = true;
             MatrixOfPairedCompRender = true;
