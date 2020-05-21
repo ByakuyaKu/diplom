@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WebApp.AHP.BLL.Interfaces\WebApp.AHP.BLL.Interfaces.csproj" />
+    <ProjectReference Include="..\WebApp.AHP.Common\WebApp.AHP.Common.csproj" />
     <ProjectReference Include="..\WebApp.AHP.Entities\WebApp.AHP.Entities.csproj" />
   </ItemGroup>
 

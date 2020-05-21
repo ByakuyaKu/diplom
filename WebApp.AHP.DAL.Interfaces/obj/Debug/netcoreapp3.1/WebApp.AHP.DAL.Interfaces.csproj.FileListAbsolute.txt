@@ -7,3 +7,6 @@ D:\Projects\diplomWeb_v1\WebApp.AHP.DAL.Interfaces\obj\Debug\netcoreapp3.1\WebAp
 D:\Projects\diplomWeb_v1\WebApp.AHP.DAL.Interfaces\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.Interfaces.AssemblyInfo.cs
 D:\Projects\diplomWeb_v1\WebApp.AHP.DAL.Interfaces\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.Interfaces.dll
 D:\Projects\diplomWeb_v1\WebApp.AHP.DAL.Interfaces\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.Interfaces.pdb
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL.Interfaces\bin\Debug\netcoreapp3.1\WebApp.AHP.Entities.dll
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL.Interfaces\bin\Debug\netcoreapp3.1\WebApp.AHP.Entities.pdb
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL.Interfaces\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.Interfaces.csproj.CopyComplete

@@ -10,6 +10,7 @@ namespace diplomWeb_v1
     public class ApplicationContext : DbContext
     {
         public DbSet<Criteria> Criterias { get; set; }
+        public DbSet<Alternative> Alternatives { get; set; }
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {

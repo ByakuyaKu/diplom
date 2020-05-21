@@ -30,6 +30,12 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
+              "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj": {
+                "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj"
+              },
+              "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Common\\WebApp.AHP.Common.csproj": {
+                "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Common\\WebApp.AHP.Common.csproj"
+              },
               "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Entities\\WebApp.AHP.Entities.csproj": {
                 "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Entities\\WebApp.AHP.Entities.csproj"
               }
@@ -72,6 +78,335 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj",
+        "projectName": "WebApp.AHP.BLL.Interfaces",
+        "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\Toga\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Toga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Entities\\WebApp.AHP.Entities.csproj": {
+                "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Entities\\WebApp.AHP.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL\\WebApp.AHP.BLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL\\WebApp.AHP.BLL.csproj",
+        "projectName": "WebApp.AHP.BLL",
+        "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL\\WebApp.AHP.BLL.csproj",
+        "packagesPath": "C:\\Users\\Toga\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Toga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj": {
+                "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj"
+              },
+              "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL.Interfaces\\WebApp.AHP.DAL.Interfaces.csproj": {
+                "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL.Interfaces\\WebApp.AHP.DAL.Interfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[4.9.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Common\\WebApp.AHP.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Common\\WebApp.AHP.Common.csproj",
+        "projectName": "WebApp.AHP.Common",
+        "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Common\\WebApp.AHP.Common.csproj",
+        "packagesPath": "C:\\Users\\Toga\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Toga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj": {
+                "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL.Interfaces\\WebApp.AHP.BLL.Interfaces.csproj"
+              },
+              "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL\\WebApp.AHP.BLL.csproj": {
+                "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.BLL\\WebApp.AHP.BLL.csproj"
+              },
+              "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL.Interfaces\\WebApp.AHP.DAL.Interfaces.csproj": {
+                "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL.Interfaces\\WebApp.AHP.DAL.Interfaces.csproj"
+              },
+              "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL\\WebApp.AHP.DAL.csproj": {
+                "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL\\WebApp.AHP.DAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL.Interfaces\\WebApp.AHP.DAL.Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL.Interfaces\\WebApp.AHP.DAL.Interfaces.csproj",
+        "projectName": "WebApp.AHP.DAL.Interfaces",
+        "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL.Interfaces\\WebApp.AHP.DAL.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\Toga\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL.Interfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Toga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Entities\\WebApp.AHP.Entities.csproj": {
+                "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Entities\\WebApp.AHP.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL\\WebApp.AHP.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL\\WebApp.AHP.DAL.csproj",
+        "projectName": "WebApp.AHP.DAL",
+        "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL\\WebApp.AHP.DAL.csproj",
+        "packagesPath": "C:\\Users\\Toga\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Toga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL.Interfaces\\WebApp.AHP.DAL.Interfaces.csproj": {
+                "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.DAL.Interfaces\\WebApp.AHP.DAL.Interfaces.csproj"
+              },
+              "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Entities\\WebApp.AHP.Entities.csproj": {
+                "projectPath": "D:\\Projects\\diplomWeb_v1\\WebApp.AHP.Entities\\WebApp.AHP.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

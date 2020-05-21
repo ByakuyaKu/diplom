@@ -4,3 +4,11 @@ D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.A
 D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.AssemblyInfo.cs
 D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.csprojAssemblyReference.cache
 D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.csproj.CoreCompileInputs.cache
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\bin\Debug\netcoreapp3.1\WebApp.AHP.DAL.pdb
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\bin\Debug\netcoreapp3.1\WebApp.AHP.DAL.Interfaces.dll
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\bin\Debug\netcoreapp3.1\WebApp.AHP.Entities.dll
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\bin\Debug\netcoreapp3.1\WebApp.AHP.DAL.Interfaces.pdb
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\bin\Debug\netcoreapp3.1\WebApp.AHP.Entities.pdb
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.csproj.CopyComplete
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.dll
+D:\Projects\diplomWeb_v1\WebApp.AHP.DAL\obj\Debug\netcoreapp3.1\WebApp.AHP.DAL.pdb

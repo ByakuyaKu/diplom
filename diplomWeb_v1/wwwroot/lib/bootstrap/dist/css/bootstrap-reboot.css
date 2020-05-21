@@ -210,10 +210,12 @@ button,
 select,
 optgroup,
 textarea {
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    resize: both;
+    width: 100px;
 }
 
 button,
@@ -267,7 +269,8 @@ input[type="month"] {
 
 textarea {
   overflow: auto;
-  resize: vertical;
+  resize: both;
+  width: 100px;
 }
 
 fieldset {

@@ -13,3 +13,13 @@
     margin-top: 25px;
 }
 
+.mytextarea {
+    resize: both;
+    width: 400px;
+    height: 150px;
+}
+
+.my1{
+    margin-bottom: 0px;
+}
+

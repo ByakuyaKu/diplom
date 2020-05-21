@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace WebApp.AHP.Entities
 {
@@ -7,13 +8,15 @@ namespace WebApp.AHP.Entities
         public int CriteriaID { get; set; }
         public string CriteriaName { get; set; }
 
-        public double CriteriaWeight { get; set; }
+        public string CriteriaWeight { get; set; }
 
-        //public Criteria(int id, string name, double weight)
-        //{
-        //    CriteriaID = id;
-        //    CriteriaName = name;
-        //    CriteriaWeight = weight;
-        //}
+        public Criteria(string name)
+        {
+            CriteriaName = name;
+        }
+
+        public Criteria()
+        {
+        }
     }
 }

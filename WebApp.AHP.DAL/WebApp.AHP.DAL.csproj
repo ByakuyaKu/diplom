@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\diplomWeb_v1\diplomWeb_v1.csproj" />
     <ProjectReference Include="..\WebApp.AHP.DAL.Interfaces\WebApp.AHP.DAL.Interfaces.csproj" />
     <ProjectReference Include="..\WebApp.AHP.Entities\WebApp.AHP.Entities.csproj" />
   </ItemGroup>
