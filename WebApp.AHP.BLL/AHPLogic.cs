@@ -20,52 +20,16 @@ namespace WebApp.AHP.BLL
             _ahpDao = ahpDao;
         }
 
-        public int GetSessionCriteriaNumber(int id)
-        {
-            return _ahpDao.GetSessionCriteriaNumber(id);
-        }
+        public int GetSessionCriteriaNumber(int sessionid) => _ahpDao.GetSessionCriteriaNumber(sessionid);
+        public int GetSessionAlternariveNumber(int sessionid) => _ahpDao.GetSessionAlternariveNumber(sessionid);
+        public int GetSessionId() => _ahpDao.GetSessionId();
+        public int AddCriteria(Criteria criteria, string matrix, int sessionid) => _ahpDao.AddCriteria(criteria, matrix, sessionid);
+        public int AddAlternative(Alternative alternative, int sessionId) => _ahpDao.AddAlternative(alternative, sessionId);
+        public int AddSession(int critriaNumber, int alternativenumber) => _ahpDao.AddSession(critriaNumber, alternativenumber);
+        public IEnumerable<Criteria> GetCriteriaName(int sessionid) => _ahpDao.GetCriteriaName(sessionid);
+        public IEnumerable<Criteria> GetAllCriteria(int sessionid) => _ahpDao.GetAllCriteria(sessionid);
+        public IEnumerable<Alternative> GetAllAlternative(int sessionid) => _ahpDao.GetAllAlternative(sessionid);
 
-        public int GetSessionAlternariveNumber(int id)
-        {
-            return _ahpDao.GetSessionAlternariveNumber(id);
-        }
-
-        public int GetSessionId()
-        {
-            return _ahpDao.GetSessionId();
-        }
-
-        public int AddCriteria(Criteria criteria, string matrix, int sessionid)
-        {
-            return _ahpDao.AddCriteria(criteria, matrix, sessionid);
-        }
-
-        public int AddAlternative(Alternative alternative, int sessionId)
-        {
-            return _ahpDao.AddAlternative(alternative, sessionId);
-        }
-
-        public int AddSession(int critriaNumber, int alternativenumber)
-        {
-            return _ahpDao.AddSession(critriaNumber, alternativenumber);
-        }
-        //public IEnumerable<Alternative> GetAlternative(int sessionid)
-        //{
-        //    return _ahpDao.GetAlternative(sessionid);
-        //}
-
-        public IEnumerable<Criteria> GetCriteriaName(int sessionid)
-        {
-            return _ahpDao.GetCriteriaName(sessionid);
-        }
-        public IEnumerable<Criteria> GetAllCriteria(int sessionid)
-        {
-            return _ahpDao.GetAllCriteria(sessionid);
-        }
-        public IEnumerable<Alternative> GetAllAlternative(int sessionid)
-        {
-            return _ahpDao.GetAllAlternative(sessionid);
-        }
 
         public List<Criteria> StartAhp(IEnumerable<Criteria> criterias, int alternativenumber) => AhpAlgorytm(ParseMatrix(criterias, alternativenumber), alternativenumber);
 
@@ -93,11 +57,9 @@ namespace WebApp.AHP.BLL
                 ParsedCriterias[i].Matrix = SplitMatrix(ParsedCriterias[i].Matrix);
 
                 for (int j = 0; j < ParsedCriterias[i].Matrix.Length;)
-                {
                     for (int c = 0; c < alternativenumber; c++)
                         for (int r = 0; r < alternativenumber; r++, j++)
                             ParsedCriterias[i].MatrixOfPairedComparisons[c, r] = Int32.Parse((ParsedCriterias[i].Matrix[j]).ToString());
-                }
             }
 
             return ParsedCriterias;
@@ -176,6 +138,5 @@ namespace WebApp.AHP.BLL
 
             return result;
         }
-
     }
 }

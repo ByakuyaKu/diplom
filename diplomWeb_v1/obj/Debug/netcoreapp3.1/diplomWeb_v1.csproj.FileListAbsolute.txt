@@ -106,7 +106,6 @@ D:\Projects\diplomWeb_v1\diplomWeb_v1\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeA
 D:\Projects\diplomWeb_v1\diplomWeb_v1\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Projects\diplomWeb_v1\diplomWeb_v1\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Projects\diplomWeb_v1\diplomWeb_v1\obj\Debug\netcoreapp3.1\Razor\Pages\About.cshtml.g.cs
-D:\Projects\diplomWeb_v1\diplomWeb_v1\obj\Debug\netcoreapp3.1\Razor\Pages\Alg\AHP_Fuzzy.cshtml.g.cs
 D:\Projects\diplomWeb_v1\diplomWeb_v1\obj\Debug\netcoreapp3.1\diplomWeb_v1.csprojAssemblyReference.cache
 D:\Projects\diplomWeb_v1\diplomWeb_v1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
 D:\Projects\diplomWeb_v1\diplomWeb_v1\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
@@ -158,3 +157,5 @@ D:\Projects\diplomWeb_v1\diplomWeb_v1\bin\Debug\netcoreapp3.1\WebApp.AHP.Common.
 D:\Projects\diplomWeb_v1\diplomWeb_v1\bin\Debug\netcoreapp3.1\WebApp.AHP.BLL.pdb
 D:\Projects\diplomWeb_v1\diplomWeb_v1\bin\Debug\netcoreapp3.1\WebApp.AHP.DAL.pdb
 D:\Projects\diplomWeb_v1\diplomWeb_v1\bin\Debug\netcoreapp3.1\WebApp.AHP.DAL.Interfaces.pdb
+D:\Projects\diplomWeb_v1\diplomWeb_v1\obj\Debug\netcoreapp3.1\Razor\Pages\Alg\AHP.cshtml.g.cs
+D:\Projects\diplomWeb_v1\diplomWeb_v1\obj\Debug\netcoreapp3.1\Razor\Pages\Alg\AHPF.cshtml.g.cs

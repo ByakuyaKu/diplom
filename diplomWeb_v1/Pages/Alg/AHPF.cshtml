@@ -1,0 +1,340 @@
+﻿@page
+@model diplomWeb_v1.Pages.Alg.AHPFModel
+@{
+    ViewData["Title"] = "AHP_Fuzzy";
+}
+
+<h1 class="display-4">Алгоритм AHP Fuzzy</h1>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/AHP.css" />
+</head>
+<body>
+    @if (Model.RenderInput)
+    {
+        if (Model.RenderFirstStep)
+        {
+            <div class="jumbotron myj">
+                <h1 class="display-4">Экспертная оценка</h1>
+                <h3>Шаг 1:</h3>
+                <div class="myform">
+                    <form method="post">
+                        <div>
+                            <label class="label-ahp-f-input">Укажите количество критериев</label>
+                            <input type="number" class="form-text" min="1" id="CriteriaNumber" name="CriteriaNumber" placeholder="Введите колиество критериев" />
+                            <label class="label-ahp-f-input">Укажите количество альтернатив</label>
+                            <input type="number" class="form-text" min="2" id="AlternativeNumber" name="AlternativeNumber" placeholder="Введите колиество альтернатив" />
+
+                            <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="SubmitCriteriaNumber" value="Подтвердить" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+        if (Model.RenderSecondStep)
+        {
+            <div class="jumbotron myj">
+                <h1 class="display-4">Экспертная оценка</h1>
+                <h3>Шаг 2:</h3>
+                <div class="myform2">
+                    <form method="post">
+                        <div>
+                            <label class="label-ahp-f-input">Укажите название альтернативы</label>
+                            <input type="text" class="form-text" id="AlternativeName" name="AlternativeName" placeholder="Введите название альтернативы" />
+                            <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="SubmitAlternative" value="Добавить альтернативу" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+
+        @if (Model.RenderThirdStep)
+        {
+            <div class="jumbotron myj">
+                <h1 class="display-4">Экспертная оценка</h1>
+                <h3>Шаг 3:</h3>
+                <div class="myform1">
+                    <form method="post">
+                        <div>
+                            <label class="label-ahp-f-input">Укажите название критериея</label>
+                            <input type="text" class="form-text" id="CriteriaName" name="CriteriaName" placeholder="Введите название критерия" />
+
+                            <label class="label-ahp-f-input">Укажите матрицу парных сравнений альтернатив по данному критерию</label>
+                            <div>
+                                <textarea class="mytextarea" id="Matrix" name="Matrix" placeholder="Введите матрицу"></textarea>
+                            </div>
+
+                            <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="SubmitCriteria" value="Добавить критерий" />
+                        </div>
+                    </form>
+                </div>
+                <div class="mytable">
+                    <h4>Нечеткая шкала относительной важности показателей</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Высказывание</th>
+                                <th scope="col">Значение для ввода в матрицу если A&gt;B</th>
+                                <th scope="col">Значение для ввода в матрицу если A&lt;B</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Два элемента равны</th>
+                                <td>EQn</td>
+                                <td>EQr</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Небольшое превосходство</th>
+                                <td>WKn</td>
+                                <td>WKr</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Существенное преимущество</th>
+                                <td>FSn</td>
+                                <td>FSr</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Явное преимущество </th>
+                                <td>VSn</td>
+                                <td>VSr</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Абсолютное преимущество </th>
+                                <td>ABn</td>
+                                <td>ABr</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        }
+
+        @if (Model.RenderFourthStep)
+        {
+            <div class="jumbotron myj">
+                <h1 class="display-4">Экспертная оценка</h1>
+                <h3>Шаг 4:</h3>
+                <div class="myform1">
+                    <form method="post">
+                        <div>
+                            <label class="label-ahp-f-input">Укажите матрицу парных сравнений критериев</label>
+                            <div>
+                                <textarea class="mytextarea" id="Matrix" name="Matrix" placeholder="Введите матрицу"></textarea>
+                            </div>
+
+                            <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="SubmitCriteriaMatrix" value="Подтвердить" />
+                        </div>
+                    </form>
+                </div>
+                <div class="mytable">
+                    <h4>Нечеткая шкала относительной важности показателей</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Высказывание</th>
+                                <th scope="col">Значение для ввода в матрицу если A&gt;B</th>
+                                <th scope="col">Значение для ввода в матрицу если A&lt;B</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Два элемента равны</th>
+                                <td>EQn</td>
+                                <td>EQr</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Небольшое превосходство</th>
+                                <td>WKn</td>
+                                <td>WKr</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Существенное преимущество</th>
+                                <td>FSn</td>
+                                <td>FSr</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Явное преимущество </th>
+                                <td>VSn</td>
+                                <td>VSr</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Абсолютное преимущество </th>
+                                <td>ABn</td>
+                                <td>ABr</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+    }
+
+    @if (Model.MatrixOfPairedCompRender)
+    {
+        <h2 class="display-4">Указанные данные при экспертной оценке</h2>
+        @for (int c = 0; c < Model.Criterias.Count; c++)
+        {
+
+            <div class="mytable">
+                <h4>Матрица парных сравнений альтернатив по критерию - @Model.Criterias[c].CriteriaName</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Имя альтернативы</th>
+                            @for (int i = 0; i < Model.Alternatives.Count; i++)
+                            {
+                                <th scope="col">@Model.Alternatives[i].AlternativeName</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @for (int i = 0; i < Model.Alternatives.Count; i++)
+                        {
+                            <tr>
+                                <th scope="row">@Model.Alternatives[i].AlternativeName</th>
+                                @for (int j = 0; j < Model.Alternatives.Count; j++)
+                                {
+                                    if (i == j)
+                                    {
+                                        <td>1</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@Model.Criterias[c].MatrixAltPairedComp[i, j]</td>
+                                    }
+                                }
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        }
+        <div class="mytable">
+            <h4>Матрица парных сравнений критериев</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Имя критерия</th>
+                        @for (int i = 0; i < Model.Criterias.Count; i++)
+                        {
+                            <th scope="col">@Model.Criterias[i].CriteriaName</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (int i = 0; i < Model.Criterias.Count; i++)
+                    {
+                        <tr>
+                            <th scope="row">@Model.Criterias[i].CriteriaName</th>
+                            @for (int j = 0; j < Model.Criterias.Count; j++)
+                            {
+                                if (i == j)
+                                {
+                                    <td>1</td>
+                                }
+                                else
+                                {
+                                    <td>@Model.Criterias[0].MatrixCrPairedComp[i, j]</td>
+                                }
+                            }
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @if (Model.RenderResult)
+    {
+        <h2 class="display-4">Полученные веса критериев и ранжированный список альтернатив</h2>
+        <div class="mytable">
+            <h4>Значимость критериев</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Имя критерия</th>
+                        @for (int i = 0; i < Model.criteriaNumber; i++)
+                        {
+                            <th scope="col">@Model.Criterias[i].CriteriaName</th>
+                        }
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Вес критерия</th>
+                        @for (int i = 0; i < Model.criteriaNumber; i++)
+                        {
+                            <td>@Model.Criterias[i].CriteriaWeight</td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mytable">
+            <h4>Ранжированный список альтернатив</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Имя альтернативы</th>
+                        @for (int i = 0; i < Model.alternativeNumber; i++)
+                        {
+                            <th scope="col">@Model.Alternatives[i].AlternativeName</th>
+                        }
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Вес альтернативы</th>
+                        @for (int i = 0; i < Model.alternativeNumber; i++)
+                        {
+                            <td>@Model.Alternatives[i].FinalScore</td>
+                        }
+
+                    </tr>
+                    <tr>
+                        <th scope="row">Ранг альтернативы</th>
+                        @for (int i = 0; i < Model.alternativeNumber; i++)
+                        {
+                            <td>@(i+1)</td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+    @if (Model.ActivateRun)
+    {
+        <form method="post" class="myf">
+            <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="StartAlg" value="Вычислить" />
+        </form>
+    }
+    else
+    {
+        <form method="post" class="myf">
+            <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="StartAlg" value="Вычислить" disabled />
+        </form>
+    }
+    <div class="my1">
+        @if (Model.RenderFirstStep)
+        {
+            <input type="button" class="btn-secondary btn submit-ahp-f-intput" asp-area="" asp-page="/Alg/AHP_Fuzzy" value="Начать заново" disabled />
+        }
+        else
+        {
+            <a type="button" class="btn-secondary btn submit-ahp-f-intput" asp-area="" asp-page="/Alg/AHP_Fuzzy">Начать заново</a>
+        }
+        <a class="btn-secondary btn submit-ahp-f-intput" asp-area="" asp-page="/Index">Вернуться на главную</a>
+    </div>
+
+</body>

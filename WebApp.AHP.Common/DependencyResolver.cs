@@ -13,14 +13,22 @@ namespace WebApp.AHP.Common
         private static readonly IAHPLogic _ahpLogic;
         private static readonly IAHPDao _ahpDao;
 
-        public static IAHPLogic AHPLogic => _ahpLogic;
+        private static readonly IFAHPLogic _fahpLogic;
+        private static readonly IFAHPDAO _fahpDao;
 
+        public static IAHPLogic AHPLogic => _ahpLogic;
         public static IAHPDao AHPDao => _ahpDao;
+
+        public static IFAHPLogic FAHPLogic => _fahpLogic;
+        public static IFAHPDAO FAHPDAO => _fahpDao;
 
         static DependencyResolver()
         {
             _ahpDao = new AHPDao();
             _ahpLogic = new AHPLogic(_ahpDao);
+
+            _fahpDao = new FAHPDAO();
+            _fahpLogic = new FAHPLogic(_fahpDao);
         }
     }
 }

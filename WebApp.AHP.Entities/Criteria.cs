@@ -24,7 +24,6 @@ namespace WebApp.AHP.Entities
         {
             CriteriaName = name;
             CriteriaWeight = criteriaWeight;
-            //Matrix = matrix;
         }
 
         public Criteria()

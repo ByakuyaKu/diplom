@@ -14,7 +14,7 @@ using WebApp.AHP.Entities;
 
 namespace diplomWeb_v1.Pages.Alg
 {
-    public class AHP_FuzzyModel : PageModel
+    public class AHPModel : PageModel
     {
         private readonly ILogger<PrivacyModel> _logger;
 
@@ -34,7 +34,7 @@ namespace diplomWeb_v1.Pages.Alg
         public bool ActivateRun { get; set; }
         public List<Criteria> Criterias { get; set; }
 
-        public AHP_FuzzyModel(ILogger<PrivacyModel> logger)
+        public AHPModel(ILogger<PrivacyModel> logger)
         {
             _logger = logger;
             Alternatives = new List<Alternative>();
@@ -55,8 +55,6 @@ namespace diplomWeb_v1.Pages.Alg
         public IActionResult OnPostSubmitCriteriaNumber(int CriteriaNumber, int AlternativeNumber)
         {
             sessionId = BLLLogic.AddSession(CriteriaNumber, AlternativeNumber);
-            criteriaNumber = BLLLogic.GetSessionCriteriaNumber(sessionId);
-            alternativeNumber = BLLLogic.GetSessionAlternariveNumber(sessionId);
 
             RenderFirstStep = false;
             RenderSecondStep = true;
@@ -75,9 +73,6 @@ namespace diplomWeb_v1.Pages.Alg
             Criterias = BLLLogic.StartAhp(Criterias, alternativeNumber);
 
             Alternatives = BLLLogic.GetAllAlternative(sessionId).ToList();
-            //for (int i = 0; i < Alternatives.Count; i++)
-            //    for (int j = 0; j < criteriaNumber; j++)
-            //        Alternatives[i].AlternativeCriterias.Add(BLLLogic.GetCriteriaName(sessionId).ToList()[j]);
 
             MatrixOfPairedCompRender = true;
             RenderFirstStep = false;
@@ -101,9 +96,6 @@ namespace diplomWeb_v1.Pages.Alg
 
             Alternatives = BLLLogic.GetAllAlternative(sessionId).ToList();
 
-            //Alternatives = BLLLogic.StartAhp(alternatives, criteriaNumber);
-
-
             RenderFirstStep = false;
             if (alternativeNumber == Alternatives.Count)
                 RenderThirdStep = true;
@@ -120,10 +112,6 @@ namespace diplomWeb_v1.Pages.Alg
             alternativeNumber = BLLLogic.GetSessionAlternariveNumber(sessionId);
             Criterias = BLLLogic.StartAhp(BLLLogic.GetAllCriteria(sessionId), alternativeNumber);
             Alternatives = BLLLogic.GetAllAlternative(sessionId).ToList();
-
-            for (int i = 0; i < Alternatives.Count; i++)
-                for (int j = 0; j < criteriaNumber; j++)
-                    Alternatives[i].AlternativeCriterias.Add(BLLLogic.GetCriteriaName(sessionId).ToList()[j]);
 
             RenderResult = true;
             MatrixOfPairedCompRender = true;

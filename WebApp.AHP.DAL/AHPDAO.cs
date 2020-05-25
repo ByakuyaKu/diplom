@@ -149,7 +149,7 @@ namespace WebApp.AHP.DAL
             }
         }
 
-        public int GetSessionCriteriaNumber(int id)
+        public int GetSessionCriteriaNumber(int sessionid)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -160,7 +160,7 @@ namespace WebApp.AHP.DAL
                 command.Parameters.Add(new SqlParameter
                 {
                     ParameterName = "@SessionId",
-                    Value = id,
+                    Value = sessionid,
                     SqlDbType = SqlDbType.Int,
                     Direction = ParameterDirection.Input
                 });
@@ -181,7 +181,7 @@ namespace WebApp.AHP.DAL
             }
         }
 
-        public int GetSessionAlternariveNumber(int id)
+        public int GetSessionAlternariveNumber(int sessionid)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -192,7 +192,7 @@ namespace WebApp.AHP.DAL
                 command.Parameters.Add(new SqlParameter
                 {
                     ParameterName = "@SessionId",
-                    Value = id,
+                    Value = sessionid,
                     SqlDbType = SqlDbType.Int,
                     Direction = ParameterDirection.Input
                 });
@@ -212,6 +212,7 @@ namespace WebApp.AHP.DAL
                 return (int)alternativenumber.Value;
             }
         }
+
         public IEnumerable<Criteria> GetAllCriteria(int sessionid)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -243,6 +244,7 @@ namespace WebApp.AHP.DAL
                 }
             }
         }
+
         public IEnumerable<Alternative> GetAllAlternative(int sessionid)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -271,7 +273,7 @@ namespace WebApp.AHP.DAL
                     };
                 }
             }
-        }     
+        }
 
         public IEnumerable<Criteria> GetCriteriaName(int sessionid)
         {
@@ -297,12 +299,11 @@ namespace WebApp.AHP.DAL
                     yield return new Criteria
                     {
                         CriteriaID = (int)reader["CriteriaID"],
-                        CriteriaName = (string)reader["CriteriaName"]                    
+                        CriteriaName = (string)reader["CriteriaName"]
                     };
                 }
             }
         }
-
 
         public int GetSessionId()
         {
