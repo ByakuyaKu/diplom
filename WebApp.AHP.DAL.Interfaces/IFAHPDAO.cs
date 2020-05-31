@@ -18,6 +18,5 @@ namespace WebApp.AHP.DAL.Interfaces
         int AddAlternative(AlternativeFAHP alternative, int sessionId);
         IEnumerable<CriteriaFAHP> GetAllCriteriaAltMatrOnly(int sessionid);
         void UpdateCriteria(int sessionid, string matrix);
-
     }
 }

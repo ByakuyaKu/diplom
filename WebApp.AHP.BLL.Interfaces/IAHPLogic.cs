@@ -17,5 +17,6 @@ namespace WebApp.AHP.BLL.Interfaces
         List<Criteria> StartAhp(IEnumerable<Criteria> criterias, int alternativenumber);
         IEnumerable<Criteria> GetAllCriteria(int sessionid);
         IEnumerable<Alternative> GetAllAlternative(int sessionid);
+        List<Alternative> SortFinalScore(List<Alternative> alternatives, List<Criteria> criterias);
     }
 }

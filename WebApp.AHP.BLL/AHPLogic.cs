@@ -34,6 +34,23 @@ namespace WebApp.AHP.BLL
         public List<Criteria> StartAhp(IEnumerable<Criteria> criterias, int alternativenumber) => AhpAlgorytm(ParseMatrix(criterias, alternativenumber), alternativenumber);
 
         public int GetInputCriteriaNumber(IEnumerable<Criteria> criterias) => criterias.ToList().Count;
+        public List<Alternative> SortFinalScore(List<Alternative> alternatives, List<Criteria> criterias)
+        {
+            for (int i = 0; i < criterias.Count; i++)
+                for (int j = 0; j < criterias[i].VectorP.Length; j++)
+                    alternatives[j].FinalScore += criterias[i].VectorP[j] * criterias[i].CriteriaWeight;
+
+            for (int i = 0; i < alternatives.Count; i++)
+                for (int j = i + 1; j < alternatives.Count; j++)
+                    if (alternatives[i].FinalScore < alternatives[j].FinalScore)
+                    {
+                        var tmp = alternatives[i].FinalScore;
+                        alternatives[i].FinalScore = alternatives[j].FinalScore;
+                        alternatives[j].FinalScore = tmp;
+                    }
+
+            return alternatives;
+        }
 
         private string SplitMatrix(string matrix)
         {

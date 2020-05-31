@@ -112,7 +112,8 @@ namespace diplomWeb_v1.Pages.Alg
             alternativeNumber = BLLLogic.GetSessionAlternariveNumber(sessionId);
             Criterias = BLLLogic.StartAhp(BLLLogic.GetAllCriteria(sessionId), alternativeNumber);
             Alternatives = BLLLogic.GetAllAlternative(sessionId).ToList();
-
+            Alternatives = BLLLogic.SortFinalScore(Alternatives, Criterias);
+            RenderFirstStep = false;
             RenderResult = true;
             MatrixOfPairedCompRender = true;
             RenderInput = false;

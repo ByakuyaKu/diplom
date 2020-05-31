@@ -9,6 +9,8 @@ namespace WebApp.AHP.Entities
         public int AlternativeID { get; set; }
         public string AlternativeName { get; set; }
 
+        public double FinalScore { get; set; }
+
 
         public Alternative(int id, string name)
         {
@@ -23,6 +25,7 @@ namespace WebApp.AHP.Entities
         public Alternative(string name)
         {
             AlternativeName = name;
+            FinalScore = 0;
         }
 
         public Alternative()

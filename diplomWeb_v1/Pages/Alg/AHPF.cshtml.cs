@@ -66,7 +66,6 @@ namespace diplomWeb_v1.Pages.Alg
             alternativeNumber = BLLLogic.GetSessionAlternariveNumber(sessionId);
             BLLLogic.AddCriteria(new CriteriaFAHP(CriteriaName, null, Matrix), Matrix, sessionId);
 
-            //Criterias = BLLLogic.GetAllCriteria(sessionId).ToList();
             Criterias = BLLLogic.ParseMatrixForAlt(BLLLogic.GetAllCriteriaAltMatrOnly(sessionId), alternativeNumber);
 
             Alternatives = BLLLogic.GetAllAlternative(sessionId).ToList();
@@ -133,6 +132,7 @@ namespace diplomWeb_v1.Pages.Alg
 
             Alternatives = BLLLogic.SortFinalScore(Alternatives);
 
+            RenderFirstStep = false;
             RenderResult = true;
             MatrixOfPairedCompRender = true;
             RenderInput = false;

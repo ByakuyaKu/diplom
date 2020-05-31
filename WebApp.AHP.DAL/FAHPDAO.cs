@@ -230,7 +230,6 @@ namespace WebApp.AHP.DAL
                     {
                         CriteriaID = (int)reader["CriteriaID"],
                         CriteriaName = (string)reader["CriteriaName"],
-                        //CriteriaWeight = (double)reader["CriteriaWeight"],
                         MatrixCrPairedCompStr = (string)reader["Matrix"],
                         MatrixAltPairedCompStr = (string)reader["MatrixAlt"],
                     };
