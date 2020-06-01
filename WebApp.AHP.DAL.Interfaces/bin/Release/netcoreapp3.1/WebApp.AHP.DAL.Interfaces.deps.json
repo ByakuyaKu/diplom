@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "WebApp.AHP.DAL.Interfaces/1.0.0": {
+        "dependencies": {
+          "WebApp.AHP.Entities": "1.0.0"
+        },
+        "runtime": {
+          "WebApp.AHP.DAL.Interfaces.dll": {}
+        }
+      },
+      "WebApp.AHP.Entities/1.0.0": {
+        "runtime": {
+          "WebApp.AHP.Entities.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WebApp.AHP.DAL.Interfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WebApp.AHP.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

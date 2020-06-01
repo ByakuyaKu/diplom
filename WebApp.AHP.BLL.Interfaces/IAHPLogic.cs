@@ -14,9 +14,10 @@ namespace WebApp.AHP.BLL.Interfaces
         int GetSessionAlternariveNumber(int sessionid);
         int GetSessionId();
         IEnumerable<Criteria> GetCriteriaName(int sessionid);
-        List<Criteria> StartAhp(IEnumerable<Criteria> criterias, int alternativenumber);
+        List<Criteria> StartAhp(IEnumerable<Criteria> criterias, List<Alternative> alternatives);
         IEnumerable<Criteria> GetAllCriteria(int sessionid);
         IEnumerable<Alternative> GetAllAlternative(int sessionid);
         List<Alternative> SortFinalScore(List<Alternative> alternatives, List<Criteria> criterias);
+        bool ValidationMatrix(string matrix, int size);
     }
 }

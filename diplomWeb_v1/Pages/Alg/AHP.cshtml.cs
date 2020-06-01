@@ -32,6 +32,7 @@ namespace diplomWeb_v1.Pages.Alg
         public bool RenderInput { get; set; }
         public bool RenderResult { get; set; }
         public bool ActivateRun { get; set; }
+        public bool Error { get; set; }
         public List<Criteria> Criterias { get; set; }
 
         public AHPModel(ILogger<PrivacyModel> logger)
@@ -46,6 +47,7 @@ namespace diplomWeb_v1.Pages.Alg
             RenderThirdStep = false;
             RenderInput = true;
             ActivateRun = false;
+            Error = false;
         }
 
         public void OnGet()
@@ -67,14 +69,25 @@ namespace diplomWeb_v1.Pages.Alg
             sessionId = BLLLogic.GetSessionId();
             criteriaNumber = BLLLogic.GetSessionCriteriaNumber(sessionId);
             alternativeNumber = BLLLogic.GetSessionAlternariveNumber(sessionId);
+
+            if (!BLLLogic.ValidationMatrix(Matrix, alternativeNumber))
+            {
+                RenderFirstStep = false;
+                Error = true;
+                RenderThirdStep = true;
+                //MatrixOfPairedCompRender = true;
+                return Page();
+            }
+
             BLLLogic.AddCriteria(new Criteria(CriteriaName, CriteriaWeight), Matrix,  sessionId);
 
             Criterias = BLLLogic.GetAllCriteria(sessionId).ToList();
-            Criterias = BLLLogic.StartAhp(Criterias, alternativeNumber);
 
             Alternatives = BLLLogic.GetAllAlternative(sessionId).ToList();
 
-            MatrixOfPairedCompRender = true;
+            Criterias = BLLLogic.StartAhp(Criterias, Alternatives);
+
+            //MatrixOfPairedCompRender = true;
             RenderFirstStep = false;
             if (BLLLogic.GetCriteriaName(sessionId).ToList().Count == criteriaNumber)
             {
@@ -110,8 +123,8 @@ namespace diplomWeb_v1.Pages.Alg
             sessionId = BLLLogic.GetSessionId();
             criteriaNumber = BLLLogic.GetSessionCriteriaNumber(sessionId);
             alternativeNumber = BLLLogic.GetSessionAlternariveNumber(sessionId);
-            Criterias = BLLLogic.StartAhp(BLLLogic.GetAllCriteria(sessionId), alternativeNumber);
             Alternatives = BLLLogic.GetAllAlternative(sessionId).ToList();
+            Criterias = BLLLogic.StartAhp(BLLLogic.GetAllCriteria(sessionId), Alternatives);
             Alternatives = BLLLogic.SortFinalScore(Alternatives, Criterias);
             RenderFirstStep = false;
             RenderResult = true;

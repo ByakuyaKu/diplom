@@ -25,9 +25,9 @@
                     <form method="post">
                         <div>
                             <label class="label-ahp-f-input">Укажите количество критериев</label>
-                            <input type="number" min="1" class="form-text" id="CriteriaNumber" name="CriteriaNumber" placeholder="Введите колиество критериев" />
+                            <input type="number" min="1" class="form-text" id="CriteriaNumber" name="CriteriaNumber" placeholder="Введите колиество критериев" required />
                             <label class="label-ahp-f-input">Укажите количество альтернатив</label>
-                            <input type="number" min="2" class="form-text" id="AlternativeNumber" name="AlternativeNumber" placeholder="Введите колиество альтернатив" />
+                            <input type="number" min="2" class="form-text" id="AlternativeNumber" name="AlternativeNumber" placeholder="Введите колиество альтернатив" required />
 
                             <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="SubmitCriteriaNumber" value="Подтвердить" />
                         </div>
@@ -44,7 +44,7 @@
                     <form method="post">
                         <div>
                             <label class="label-ahp-f-input">Укажите название альтернативы</label>
-                            <input type="text" class="form-text" id="AlternativeName" name="AlternativeName" placeholder="Введите название альтернативы" />
+                            <input type="text" class="form-text" id="AlternativeName" name="AlternativeName" placeholder="Введите название альтернативы" maxlength="500" required />
                             <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="SubmitAlternative" value="Добавить альтернативу" />
                         </div>
                     </form>
@@ -54,6 +54,12 @@
 
         @if (Model.RenderThirdStep)
         {
+            @if (Model.Error)
+            {
+            <div class="alert alert-dark" role="alert">
+                Ошибка! Введена неправильная матрица.
+            </div>
+            }
             <div class="jumbotron myj">
                 <h1 class="display-4">Экспертная оценка</h1>
                 <h3>Шаг 3:</h3>
@@ -61,14 +67,14 @@
                     <form method="post">
                         <div>
                             <label class="label-ahp-f-input">Укажите название критериея</label>
-                            <input type="text" class="form-text" id="CriteriaName" name="CriteriaName" placeholder="Введите название критерия" />
+                            <input type="text" class="form-text" id="CriteriaName" name="CriteriaName" placeholder="Введите название критерия" required />
 
                             <label class="label-ahp-f-input">Укажите вес критерия</label>
-                            <input type="number" class="form-text" min="0" max="1" step="any" id="CriteriaWeight" name="CriteriaWeight" placeholder="Введите вес критерия" />
+                            <input type="number" class="form-text" min="0" max="1" step="any" id="CriteriaWeight" name="CriteriaWeight" placeholder="Введите вес критерия" required />
 
                             <label class="label-ahp-f-input">Укажите матрицу парных сравнений альтернатив по данному критерию</label>
                             <div>
-                                <textarea class="mytextarea" id="Matrix" name="Matrix" placeholder="Введите матрицу"></textarea>
+                                <textarea class="mytextarea" id="Matrix" name="Matrix" placeholder="Введите матрицу" maxlength="500" required></textarea>
                             </div>
 
                             <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="SubmitCriteria" value="Добавить критерий" />
@@ -81,104 +87,106 @@
 
     @if (Model.MatrixOfPairedCompRender)
     {
-        <h2 class="display-4">Указанные данные при экспертной оценке</h2>
-        @for (int c = 0; c < Model.Criterias.Count; c++)
-        {
+        <div class="jumbotron myj">
+            <h2 class="display-4">Указанные данные при экспертной оценке</h2>
+            @for (int c = 0; c < Model.Criterias.Count; c++)
+            {
+                <div class="mytable">
+                    <h4>Матрица парных сравнений альтернатив по критерию - @Model.Criterias[c].CriteriaName</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Название альтернативы</th>
+                                @for (int i = 0; i < Model.alternativeNumber; i++)
+                                {
+                                    <th scope="col">@Model.Alternatives[i].AlternativeName</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @for (int i = 0; i < Model.alternativeNumber; i++)
+                            {
+                                <tr>
+                                    <th scope="row">@Model.Alternatives[i].AlternativeName</th>
+                                    @for (int j = 0; j < Model.alternativeNumber; j++)
+                                    {
+                                        if (i == j)
+                                        {
+                                            <td>1</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@Model.Criterias[c].MatrixOfPairedComparisons[i, j].ToString("F3")</td>
+                                        }
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
             <div class="mytable">
-                <h4>Матрица парных сравнений альтернатив по критерию - @Model.Criterias[c].CriteriaName</h4>
+                <h4>Значимость критериев</h4>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Имя альтернативы</th>
-                            @for (int i = 0; i < Model.alternativeNumber; i++)
+                            <th scope="col">Название критерия</th>
+                            @for (int i = 0; i < Model.Criterias.Count; i++)
                             {
-                                <th scope="col">@Model.Alternatives[i].AlternativeName</th>
+                                <th scope="col">@Model.Criterias[i].CriteriaName</th>
                             }
+
                         </tr>
                     </thead>
                     <tbody>
-
-                        @for (int i = 0; i < Model.alternativeNumber; i++)
-                        {
-                            <tr>
-                                <th scope="row">@Model.Alternatives[i].AlternativeName</th>
-                                @for (int j = 0; j < Model.alternativeNumber; j++)
-                                {
-                                    if (i == j)
-                                    {
-                                        <td>1</td>
-                                    }
-                                    else
-                                    {
-                                        <td>@Model.Criterias[c].MatrixOfPairedComparisons[i, j]</td>
-                                    }
-                                }
-                            </tr>
-                        }
-
+                        <tr>
+                            <th scope="row">Вес критерия</th>
+                            @for (int i = 0; i < Model.Criterias.Count; i++)
+                            {
+                                <td>@Model.Criterias[i].CriteriaWeight.ToString("F3")</td>
+                            }
+                        </tr>
                     </tbody>
                 </table>
             </div>
-        }
-        <div class="mytable">
-            <h4>Значимость критериев</h4>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Имя критерия</th>
-                        @for (int i = 0; i < Model.Criterias.Count; i++)
-                        {
-                            <th scope="col">@Model.Criterias[i].CriteriaName</th>
-                        }
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Вес критерия</th>
-                        @for (int i = 0; i < Model.Criterias.Count; i++)
-                        {
-                            <td>@Model.Criterias[i].CriteriaWeight</td>
-                        }
-                    </tr>
-                </tbody>
-            </table>
         </div>
     }
 
     @if (Model.RenderResult)
     {
-        <h2 class="display-4">Результат вычислений</h2>
-        <div class="mytable">
-            <h4>Значимость критериев</h4>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Имя альтернативы</th>
-                        @for (int i = 0; i < Model.Alternatives.Count; i++)
-                        {
-                            <th scope="col">@Model.Alternatives[i].AlternativeName</th>
-                        }
+        <div class="jumbotron myj">
+            <h2 class="display-4">Полученный ранжированный список альтернатив</h2>
+            <div class="mytable">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Название альтернативы</th>
+                            @for (int i = 0; i < Model.Alternatives.Count; i++)
+                            {
+                                <th scope="col">@Model.Alternatives[i].AlternativeName</th>
+                            }
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Вес</th>
-                        @for (int i = 0; i < Model.Alternatives.Count; i++)
-                        {
-                            <td>@Model.Alternatives[i].FinalScore</td>
-                        }
-                    </tr>
-                    <tr>
-                        <th scope="row">Ранг</th>
-                        @for (int i = 0; i < Model.Alternatives.Count; i++)
-                        {
-                            <td>@(i+1)</td>
-                        }
-                    </tr>
-                </tbody>
-            </table>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Вес альтернативы</th>
+                            @for (int i = 0; i < Model.Alternatives.Count; i++)
+                            {
+                                <td>@Model.Alternatives[i].FinalScore.ToString("F3")</td>
+                            }
+                        </tr>
+                        <tr>
+                            <th scope="row">Ранг альтернативы</th>
+                            @for (int i = 0; i < Model.Alternatives.Count; i++)
+                            {
+                                <td>@(i+1)</td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     }
     @if (Model.ActivateRun)

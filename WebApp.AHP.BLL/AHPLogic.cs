@@ -31,9 +31,25 @@ namespace WebApp.AHP.BLL
         public IEnumerable<Alternative> GetAllAlternative(int sessionid) => _ahpDao.GetAllAlternative(sessionid);
 
 
-        public List<Criteria> StartAhp(IEnumerable<Criteria> criterias, int alternativenumber) => AhpAlgorytm(ParseMatrix(criterias, alternativenumber), alternativenumber);
+        public List<Criteria> StartAhp(IEnumerable<Criteria> criterias, List<Alternative> alternatives) => AhpAlgorytm(ParseMatrix(criterias, alternatives.Count), alternatives);
 
         public int GetInputCriteriaNumber(IEnumerable<Criteria> criterias) => criterias.ToList().Count;
+        public bool ValidationMatrix(string matrix, int size)
+        {
+            matrix = SplitMatrix(matrix);
+            if (matrix.Length != Math.Pow(size, 2))
+                return false;
+
+            for (int i = 0; i < matrix.Length; i+= size+1)
+                if (matrix[i] != '1')
+                    return false;
+
+            for (int i = 0; i < matrix.Length; i++)
+                if (matrix[i] != '0' && matrix[i] != '1' && matrix[i] != '2')
+                    return false;
+
+            return true;
+        }
         public List<Alternative> SortFinalScore(List<Alternative> alternatives, List<Criteria> criterias)
         {
             for (int i = 0; i < criterias.Count; i++)
@@ -82,11 +98,11 @@ namespace WebApp.AHP.BLL
             return ParsedCriterias;
         }
 
-        private List<Criteria> AhpAlgorytm(List<Criteria> criterias, int alternativenumber)
+        private List<Criteria> AhpAlgorytm(List<Criteria> criterias, List<Alternative> alternatives)
         {
-            criterias = VectorPInit(criterias, alternativenumber);
+            criterias = VectorPInit(criterias, alternatives.Count);
 
-            var pnext = new double[alternativenumber];
+            var pnext = new double[alternatives.Count];
 
             for (int i = 0; i < criterias.Count; i++)
             {
@@ -104,6 +120,7 @@ namespace WebApp.AHP.BLL
                         break;
                 }
             }
+            //GetFinalScoreAlternative(alternatives, criterias);
 
             return criterias;
         }

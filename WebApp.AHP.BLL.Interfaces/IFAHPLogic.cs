@@ -23,5 +23,6 @@ namespace WebApp.AHP.BLL.Interfaces
         List<CriteriaFAHP> ParseMatrixForCr(IEnumerable<CriteriaFAHP> criterias);
         List<AlternativeFAHP> StartFAhp(IEnumerable<CriteriaFAHP> criterias, List<AlternativeFAHP> alternatives);
         List<AlternativeFAHP> SortFinalScore(List<AlternativeFAHP> alternatives);
+        bool ValidationMatrix(string matrix, int size);
     }
 }

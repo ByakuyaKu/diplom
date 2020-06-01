@@ -1,0 +1,9 @@
+D:\Projects\diplomWeb_v1\WebApp.AHP.Entities\bin\Release\netcoreapp3.1\WebApp.AHP.Entities.deps.json
+D:\Projects\diplomWeb_v1\WebApp.AHP.Entities\bin\Release\netcoreapp3.1\WebApp.AHP.Entities.dll
+D:\Projects\diplomWeb_v1\WebApp.AHP.Entities\bin\Release\netcoreapp3.1\WebApp.AHP.Entities.pdb
+D:\Projects\diplomWeb_v1\WebApp.AHP.Entities\obj\Release\netcoreapp3.1\WebApp.AHP.Entities.csprojAssemblyReference.cache
+D:\Projects\diplomWeb_v1\WebApp.AHP.Entities\obj\Release\netcoreapp3.1\WebApp.AHP.Entities.csproj.CoreCompileInputs.cache
+D:\Projects\diplomWeb_v1\WebApp.AHP.Entities\obj\Release\netcoreapp3.1\WebApp.AHP.Entities.AssemblyInfoInputs.cache
+D:\Projects\diplomWeb_v1\WebApp.AHP.Entities\obj\Release\netcoreapp3.1\WebApp.AHP.Entities.AssemblyInfo.cs
+D:\Projects\diplomWeb_v1\WebApp.AHP.Entities\obj\Release\netcoreapp3.1\WebApp.AHP.Entities.dll
+D:\Projects\diplomWeb_v1\WebApp.AHP.Entities\obj\Release\netcoreapp3.1\WebApp.AHP.Entities.pdb

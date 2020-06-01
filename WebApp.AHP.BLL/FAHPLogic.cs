@@ -28,6 +28,25 @@ namespace WebApp.AHP.BLL
         public IEnumerable<CriteriaFAHP> GetAllCriteriaAltMatrOnly(int sessionid) => _fahpDao.GetAllCriteriaAltMatrOnly(sessionid);
         public List<AlternativeFAHP> StartFAhp(IEnumerable<CriteriaFAHP> criterias, List<AlternativeFAHP> alternatives) => StartFAHP(Parse(criterias, alternatives.Count), alternatives);
         public void UpdateCriteria(int sessionid, string matrix) => _fahpDao.UpdateCriteria(sessionid, matrix);
+        public bool ValidationMatrix(string matrix, int size)
+        {
+            matrix = SplitMatrix(matrix);
+            if (matrix.Length != Math.Pow(size, 2) * 3)
+                return false;
+
+            for (int i = 0; i < matrix.Length; i += 3 * (size + 1))
+                if (matrix.Substring(i, 3) != "EQn" && matrix.Substring(i, 3) != "EQr")
+                    return false;
+
+            for (int i = 0; i < matrix.Length; i+=3)
+                if (matrix.Substring(i, 3) != "EQn" && matrix[i] != '1' && matrix.Substring(i, 3) != "EQr" && 
+                    matrix.Substring(i, 3) != "WKn" && matrix.Substring(i, 3) != "WKr" && matrix.Substring(i, 3) != "FSn" && 
+                    matrix.Substring(i, 3) != "FSr" && matrix.Substring(i, 3) != "VSn" && matrix.Substring(i, 3) != "VSr" && 
+                    matrix.Substring(i, 3) != "ABn" && matrix.Substring(i, 3) != "ABr")
+                    return false;
+
+            return true;
+        }
         public List<AlternativeFAHP>SortFinalScore(List<AlternativeFAHP> alternatives)
         {
             for (int i = 0; i < alternatives.Count; i++)

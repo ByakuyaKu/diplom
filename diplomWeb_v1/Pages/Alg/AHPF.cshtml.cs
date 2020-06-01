@@ -29,6 +29,8 @@ namespace diplomWeb_v1.Pages.Alg
         public bool RenderResult { get; set; }
         public bool ActivateRun { get; set; }
         public List<CriteriaFAHP> Criterias { get; set; }
+        public bool Error { get; set; }
+
 
         public AHPFModel(ILogger<PrivacyModel> logger)
         {
@@ -43,6 +45,7 @@ namespace diplomWeb_v1.Pages.Alg
             RenderFourthStep = false;
             RenderInput = true;
             ActivateRun = false;
+            Error = false;
         }
         public void OnGet()
         {
@@ -64,6 +67,16 @@ namespace diplomWeb_v1.Pages.Alg
             sessionId = BLLLogic.GetSessionId();
             criteriaNumber = BLLLogic.GetSessionCriteriaNumber(sessionId);
             alternativeNumber = BLLLogic.GetSessionAlternariveNumber(sessionId);
+
+            if (!BLLLogic.ValidationMatrix(Matrix, alternativeNumber))
+            {
+                Error = true;
+                RenderFirstStep = false;
+                RenderThirdStep = true;
+                return Page();
+            }
+
+
             BLLLogic.AddCriteria(new CriteriaFAHP(CriteriaName, null, Matrix), Matrix, sessionId);
 
             Criterias = BLLLogic.ParseMatrixForAlt(BLLLogic.GetAllCriteriaAltMatrOnly(sessionId), alternativeNumber);
@@ -99,6 +112,15 @@ namespace diplomWeb_v1.Pages.Alg
         {
             sessionId = BLLLogic.GetSessionId();
             alternativeNumber = BLLLogic.GetSessionAlternariveNumber(sessionId);
+            criteriaNumber = BLLLogic.GetSessionCriteriaNumber(sessionId);
+
+            if (!BLLLogic.ValidationMatrix(Matrix, criteriaNumber))
+            {
+                Error = true;
+                RenderFirstStep = false;
+                RenderFourthStep = true;
+                return Page();
+            }
 
             BLLLogic.UpdateCriteria(sessionId, Matrix);
 
