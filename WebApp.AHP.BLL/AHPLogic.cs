@@ -4,10 +4,6 @@ using System.Linq;
 using WebApp.AHP.BLL.Interfaces;
 using WebApp.AHP.DAL.Interfaces;
 using WebApp.AHP.Entities;
-using MathNet.Numerics;
-using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Double;
-using MathNet.Numerics.LinearAlgebra.Complex;
 
 namespace WebApp.AHP.BLL
 {
@@ -48,7 +44,7 @@ namespace WebApp.AHP.BLL
                 if (matrix[i] != '0' && matrix[i] != '1' && matrix[i] != '2')
                     return false;
 
-            return true;
+                return true;
         }
         public List<Alternative> SortFinalScore(List<Alternative> alternatives, List<Criteria> criterias)
         {
@@ -60,9 +56,9 @@ namespace WebApp.AHP.BLL
                 for (int j = i + 1; j < alternatives.Count; j++)
                     if (alternatives[i].FinalScore < alternatives[j].FinalScore)
                     {
-                        var tmp = alternatives[i].FinalScore;
-                        alternatives[i].FinalScore = alternatives[j].FinalScore;
-                        alternatives[j].FinalScore = tmp;
+                        var tmp = alternatives[i];
+                        alternatives[i] = alternatives[j];
+                        alternatives[j] = tmp;
                     }
 
             return alternatives;
@@ -110,7 +106,7 @@ namespace WebApp.AHP.BLL
                 {
                     pnext = MultiplyMatrixByVecor(criterias[i].MatrixOfPairedComparisons, criterias[i].VectorP);
 
-                    pnext = Normalize(pnext, VectorSum(criterias[i].VectorP));
+                    pnext = Normalize(pnext, VectorSum(pnext));
 
                     if (!Accuracy(criterias[i].VectorP, pnext))
                         criterias[i].VectorP = pnext;
@@ -120,7 +116,6 @@ namespace WebApp.AHP.BLL
                         break;
                 }
             }
-            //GetFinalScoreAlternative(alternatives, criterias);
 
             return criterias;
         }

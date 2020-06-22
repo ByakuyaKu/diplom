@@ -10,8 +10,8 @@ namespace WebApp.AHP.DAL
 {
     public class FAHPDAO : IFAHPDAO
     {
-        private string _connectionString = "Data Source=.;Initial Catalog=WebAppDb;Integrated Security=True";
-        //private string _connectionString = "workstation id=mcdaOnlineDB.mssql.somee.com;packet size=4096;user id=Toga_SQLLogin_1;pwd=om3qbycw6p;data source=mcdaOnlineDB.mssql.somee.com;persist security info=False;initial catalog=mcdaOnlineDB";
+        //private string _connectionString = "Data Source=.;Initial Catalog=WebAppDb;Integrated Security=True";
+        private string _connectionString = "workstation id=mcdaOnlineDB.mssql.somee.com;packet size=4096;user id=Toga_SQLLogin_1;pwd=om3qbycw6p;data source=mcdaOnlineDB.mssql.somee.com;persist security info=False;initial catalog=mcdaOnlineDB";
 
         public int AddSession(int criterianumber, int alternativenumber)
         {

@@ -9,7 +9,6 @@ using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.ProjectModel;
 using WebApp.AHP.BLL.Interfaces;
 using WebApp.AHP.Common;
-using WebApp.AHP.DAL.Interfaces;
 using WebApp.AHP.Entities;
 
 namespace diplomWeb_v1.Pages.Alg
@@ -75,7 +74,6 @@ namespace diplomWeb_v1.Pages.Alg
                 RenderFirstStep = false;
                 Error = true;
                 RenderThirdStep = true;
-                //MatrixOfPairedCompRender = true;
                 return Page();
             }
 
@@ -87,10 +85,10 @@ namespace diplomWeb_v1.Pages.Alg
 
             Criterias = BLLLogic.StartAhp(Criterias, Alternatives);
 
-            //MatrixOfPairedCompRender = true;
             RenderFirstStep = false;
             if (BLLLogic.GetCriteriaName(sessionId).ToList().Count == criteriaNumber)
             {
+                MatrixOfPairedCompRender = true;
                 ActivateRun = true;
                 RenderInput = false;
             }

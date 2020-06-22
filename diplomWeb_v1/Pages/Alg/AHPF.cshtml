@@ -208,20 +208,27 @@
 
                             @for (int i = 0; i < Model.Alternatives.Count; i++)
                             {
-                                <tr>
-                                    <th scope="row">@Model.Alternatives[i].AlternativeName</th>
-                                    @for (int j = 0; j < Model.Alternatives.Count; j++)
+                            <tr>
+                                <th scope="row">@Model.Alternatives[i].AlternativeName</th>
+                                @for (int j = 0; j < Model.Alternatives.Count; j++)
+                                {
+                                    if (i == j)
                                     {
-                                        if (i == j)
+                                        <td>1</td>
+                                    }
+                                    else
+                                    {
+                                        @if (Model.Criterias[c].MatrixAltPairedComp[i, j].ToString().Length > 5)
                                         {
-                                            <td>1</td>
+                                        <td>@Model.Criterias[c].MatrixAltPairedComp[i, j].ToString("F3")</td>
                                         }
                                         else
                                         {
-                                            <td>@Model.Criterias[c].MatrixAltPairedComp[i, j].ToString("F3")</td>
+                                        <td>@Model.Criterias[c].MatrixAltPairedComp[i, j]</td>
                                         }
                                     }
-                                </tr>
+                                }
+                            </tr>
                             }
 
                         </tbody>
@@ -245,20 +252,27 @@
 
                         @for (int i = 0; i < Model.Criterias.Count; i++)
                         {
-                            <tr>
-                                <th scope="row">@Model.Criterias[i].CriteriaName</th>
-                                @for (int j = 0; j < Model.Criterias.Count; j++)
+                        <tr>
+                            <th scope="row">@Model.Criterias[i].CriteriaName</th>
+                            @for (int j = 0; j < Model.Criterias.Count; j++)
+                            {
+                                if (i == j)
                                 {
-                                    if (i == j)
+                                    <td>1</td>
+                                }
+                                else
+                                {
+                                    @if (Model.Criterias[0].MatrixCrPairedComp[i, j].ToString().Length > 5)
                                     {
-                                        <td>1</td>
+                                    <td>@Model.Criterias[0].MatrixCrPairedComp[i, j].ToString("F3")</td>
                                     }
                                     else
                                     {
-                                        <td>@Model.Criterias[0].MatrixCrPairedComp[i, j].ToString("F3")</td>
+                                    <td>@Model.Criterias[0].MatrixCrPairedComp[i, j]</td>
                                     }
                                 }
-                            </tr>
+                            }
+                        </tr>
                         }
 
                     </tbody>
@@ -289,7 +303,14 @@
                             <th scope="row">Вес критерия</th>
                             @for (int i = 0; i < Model.criteriaNumber; i++)
                             {
+                                @if (@Model.Criterias[i].CriteriaWeight.ToString().Length > 5)
+                                {
                                 <td>@Model.Criterias[i].CriteriaWeight.ToString("F3")</td>
+                                }
+                                else
+                                {
+                                <td>@Model.Criterias[i].CriteriaWeight</td>
+                                }
                             }
                         </tr>
                     </tbody>
@@ -313,7 +334,14 @@
                             <th scope="row">Вес альтернативы</th>
                             @for (int i = 0; i < Model.alternativeNumber; i++)
                             {
+                                @if (Model.Alternatives[i].FinalScore.ToString().Length > 5)
+                                {
                                 <td>@Model.Alternatives[i].FinalScore.ToString("F3")</td>
+                                }
+                                else
+                                {
+                                <td>@Model.Alternatives[i].FinalScore</td>
+                                }
                             }
 
                         </tr>
@@ -332,23 +360,23 @@
     @if (Model.ActivateRun)
     {
         <form method="post" class="myf">
-            <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="StartAlg" value="Вычислить" />
+            <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="StartAlg" value="Ранжировать альтернативы" />
         </form>
     }
     else
     {
         <form method="post" class="myf">
-            <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="StartAlg" value="Вычислить" disabled />
+            <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="StartAlg" value="Ранжировать альтернативы" disabled />
         </form>
     }
     <div class="my1">
         @if (Model.RenderFirstStep)
         {
-            <input type="button" class="btn-secondary btn submit-ahp-f-intput" asp-area="" asp-page="/Alg/AHP_Fuzzy" value="Начать заново" disabled />
+            <input type="button" class="btn-secondary btn submit-ahp-f-intput" asp-area="" asp-page="/Alg/AHP_Fuzzy" value="Начать ввод заново" disabled />
         }
         else
         {
-            <a type="button" class="btn-secondary btn submit-ahp-f-intput" asp-area="" asp-page="/Alg/AHP_Fuzzy">Начать заново</a>
+        <a type="button" class="btn-secondary btn submit-ahp-f-intput" asp-area="" asp-page="/Alg/AHP_Fuzzy">Начать ввод заново</a>
         }
         <a class="btn-secondary btn submit-ahp-f-intput" asp-area="" asp-page="/Index">Вернуться на главную</a>
     </div>

@@ -87,70 +87,83 @@
 
     @if (Model.MatrixOfPairedCompRender)
     {
-        <div class="jumbotron myj">
-            <h2 class="display-4">Указанные данные при экспертной оценке</h2>
-            @for (int c = 0; c < Model.Criterias.Count; c++)
-            {
-                <div class="mytable">
-                    <h4>Матрица парных сравнений альтернатив по критерию - @Model.Criterias[c].CriteriaName</h4>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Название альтернативы</th>
-                                @for (int i = 0; i < Model.alternativeNumber; i++)
+    <div class="jumbotron myj">
+    <h2 class="display-4">Указанные данные при экспертной оценке</h2>
+    @for (int c = 0; c < Model.Criterias.Count; c++)
+    {
+    <div class="mytable">
+        <h4>Матрица парных сравнений альтернатив по критерию - @Model.Criterias[c].CriteriaName</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Название альтернативы</th>
+                    @for (int i = 0; i < Model.alternativeNumber; i++)
                                 {
-                                    <th scope="col">@Model.Alternatives[i].AlternativeName</th>
+                    <th scope="col">@Model.Alternatives[i].AlternativeName</th>
                                 }
-                            </tr>
-                        </thead>
-                        <tbody>
+                </tr>
+            </thead>
+            <tbody>
 
-                            @for (int i = 0; i < Model.alternativeNumber; i++)
+                @for (int i = 0; i < Model.alternativeNumber; i++)
+                {
+                <tr>
+                    <th scope="row">@Model.Alternatives[i].AlternativeName</th>
+                    @for (int j = 0; j < Model.alternativeNumber; j++)
+                    {
+                        if (i == j)
+                        {
+                            <td>1</td>
+                        }
+                        else
+                        {
+                            @if (Model.Criterias[c].MatrixOfPairedComparisons[i, j].ToString().Length > 5)
                             {
-                                <tr>
-                                    <th scope="row">@Model.Alternatives[i].AlternativeName</th>
-                                    @for (int j = 0; j < Model.alternativeNumber; j++)
-                                    {
-                                        if (i == j)
-                                        {
-                                            <td>1</td>
-                                        }
-                                        else
-                                        {
-                                            <td>@Model.Criterias[c].MatrixOfPairedComparisons[i, j].ToString("F3")</td>
-                                        }
-                                    }
-                                </tr>
+                                <td>@Model.Criterias[c].MatrixOfPairedComparisons[i, j].ToString("F3")</td>
                             }
-                        </tbody>
-                    </table>
-                </div>
-            }
-            <div class="mytable">
-                <h4>Значимость критериев</h4>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Название критерия</th>
-                            @for (int i = 0; i < Model.Criterias.Count; i++)
+                            else
                             {
-                                <th scope="col">@Model.Criterias[i].CriteriaName</th>
+                                <td>@Model.Criterias[c].MatrixOfPairedComparisons[i, j]</td>
                             }
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Вес критерия</th>
-                            @for (int i = 0; i < Model.Criterias.Count; i++)
+                        }
+                    }
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    }
+    <div class="mytable">
+        <h4>Значимость критериев</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Название критерия</th>
+                    @for (int i = 0; i < Model.Criterias.Count; i++)
                             {
-                                <td>@Model.Criterias[i].CriteriaWeight.ToString("F3")</td>
+                    <th scope="col">@Model.Criterias[i].CriteriaName</th>
                             }
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Вес критерия</th>
+                    @for (int i = 0; i < Model.Criterias.Count; i++)
+                    {
+                        @if (Model.Criterias[i].CriteriaWeight.ToString().Length > 5)
+                        {
+                            <td>@Model.Criterias[i].CriteriaWeight.ToString("F3")</td>
+                        }
+                        else
+                        {
+                            <td>@Model.Criterias[i].CriteriaWeight</td>
+                        }
+                    }
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
     }
 
     @if (Model.RenderResult)
@@ -174,7 +187,14 @@
                             <th scope="row">Вес альтернативы</th>
                             @for (int i = 0; i < Model.Alternatives.Count; i++)
                             {
-                                <td>@Model.Alternatives[i].FinalScore.ToString("F3")</td>
+                                @if (Model.Alternatives[i].FinalScore.ToString().Length > 5)
+                                {
+                                    <td>@Model.Alternatives[i].FinalScore.ToString("F3")</td>
+                                }
+                                else
+                                {
+                                    <td>@Model.Alternatives[i].FinalScore</td>
+                                }
                             }
                         </tr>
                         <tr>
@@ -192,23 +212,23 @@
     @if (Model.ActivateRun)
     {
         <form method="post" class="myf">
-            <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="StartAlg" value="Вычислить" />
+            <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="StartAlg" value="Ранжировать альтернативы" />
         </form>
     }
     else
     {
         <form method="post" class="myf">
-            <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="StartAlg" value="Вычислить" disabled />
+            <input type="submit" class="btn-secondary btn submit-ahp-f-intput" asp-page-handler="StartAlg" value="Ранжировать альтернативы" disabled />
         </form>
     }
     <div class="my1">
         @if (Model.RenderFirstStep)
         {
-            <input type="button" class="btn-secondary btn submit-ahp-f-intput" asp-area="" asp-page="/Alg/AHP_Fuzzy" value="Начать заново" disabled />
+            <input type="button" class="btn-secondary btn submit-ahp-f-intput" asp-area="" asp-page="/Alg/AHP_Fuzzy" value="Начать ввод заново" disabled />
         }
         else
         {
-            <a type="button" class="btn-secondary btn submit-ahp-f-intput" asp-area="" asp-page="/Alg/AHP_Fuzzy">Начать заново</a>
+    <a type="button" class="btn-secondary btn submit-ahp-f-intput" asp-area="" asp-page="/Alg/AHP_Fuzzy">Начать ввод заново</a>
         }
         <a class="btn-secondary btn submit-ahp-f-intput" asp-area="" asp-page="/Index">Вернуться на главную</a>
     </div>
